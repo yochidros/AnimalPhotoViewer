@@ -4,10 +4,43 @@
 <dict>
 	<key>SchemeUserState</key>
 	<dict>
-		<key>AnimalPhotoViewer.xcscheme_^#shared#^_</key>
+		<key>API.xcscheme_^#shared#^_</key>
 		<dict>
 			<key>orderHint</key>
 			<integer>0</integer>
+		</dict>
+		<key>AnimalPhotoViewer.xcscheme_^#shared#^_</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>F2B2DDEA22C787A100D3FFE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2B2DDFE22C787A300D3FFE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2B2DE0922C787A300D3FFE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2B2DE6622C78AC200D3FFE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F2B2DE6E22C78AC200D3FFE6</key>
+		<dict>
+			<key>primary</key>
+			<true/>
 		</dict>
 	</dict>
 </dict>
