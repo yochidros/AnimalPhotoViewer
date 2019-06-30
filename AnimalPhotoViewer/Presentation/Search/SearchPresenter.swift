@@ -70,10 +70,19 @@ final class SearchPresenter: NSObject, SearchPresentation {
     self.searchText = searchText
     self.images = []
     self.isLoading = true
-    let text = (searchText != nil) ? "animal+\(searchText!)" : "animal"
+    var params: [String: String] = [:]
+    if Utils.isJapanese {
+      params["lang"] = "ja"
+      params["q"] = (searchText != nil) ? "動物+\(searchText!)" : "動物"
+    } else {
+      if let code = NSLocale.current.languageCode {
+        params["lang"] = code
+      }
+      params["q"] = (searchText != nil) ? "animal+\(searchText!)" : "animal"
+    }
     self.respository.search(
       next: false,
-      params: ["q": text],
+      params: params,
       onSuccess: { [self] (response) in
         self.images = response.items
         self.isLoading = false
@@ -91,10 +100,19 @@ final class SearchPresenter: NSObject, SearchPresentation {
   
   func nextLoad() {
     self.isLoading = true
-    let text = (self.searchText != nil) ? "animal+\(self.searchText!)" : "animal"
+    var params: [String: String] = [:]
+    if Utils.isJapanese {
+      params["lang"] = "ja"
+      params["q"] = (searchText != nil) ? "動物+\(searchText!)" : "動物"
+    } else {
+      if let code = NSLocale.current.languageCode {
+        params["lang"] = code
+      }
+      params["q"] = (searchText != nil) ? "animal+\(searchText!)" : "animal"
+    }
     self.respository.search(
       next: true,
-      params: ["q": text],
+      params: params,
       onSuccess: { [self] (response) in
         self.images.append(contentsOf: response.items)
         self.isLoading = false
@@ -142,8 +160,8 @@ extension SearchPresenter: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SearchListCollectionViewCell.className, for: indexPath)
-    let item = self.images[indexPath.row]
-    if let c = cell as? SearchListCollectionViewCell {
+    if let c = cell as? SearchListCollectionViewCell, images.count != 0 {
+      let item = self.images[indexPath.row]
       c.configure(imageURL: item.previewURL)
     }
     return cell

@@ -8,11 +8,16 @@
 
 import UIKit
 import API
+import AVFoundation
 
 class PreviewViewController: UIViewController {
 
+  @IBOutlet weak var scrollView: UIScrollView?
+  
   @IBOutlet weak var previewView: UIImageView?
   private var image: ItemResponse?
+  var gestureRecognizer: UITapGestureRecognizer?
+  
   
   init(image: ItemResponse) {
     self.image = image
@@ -26,36 +31,41 @@ class PreviewViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     self.navigationItem.largeTitleDisplayMode = .never
+    
     self.showImage()
+    prepareView()
+  }
+  
+  private func prepareView() {
+    self.scrollView?.delegate = self
+    
+    
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleDoubleTapped))
+    tapGesture.numberOfTapsRequired = 2
+    scrollView?.addGestureRecognizer(tapGesture)
+    self.gestureRecognizer = tapGesture
   }
 
   private func showImage() {
     guard let image = self.image else { return }
     ImageLoader.loadImage(url: image.largeImageURL, into: previewView)
   }
+  
+  @objc func handleDoubleTapped() {
+    if scrollView?.zoomScale != 1 {
+      scrollView?.setZoomScale(1, animated: true)
+    } else {
+      scrollView?.setZoomScale(3, animated: true)
+    }
+  }
 
 }
 
-extension UIView {
-  func showLoading() {
-    if self.subviews.contains(where: { $0.tag == 100 }), let view = self.subviews.first(where: { $0.tag == 100 }) {
-      view.removeFromSuperview()
-    }
-    let indicator = UIActivityIndicatorView(style: .whiteLarge)
-    indicator.frame = CGRect(origin: .zero, size: CGSize(width: 60, height: 60))
-    indicator.color = UIColor.blue
-    indicator.tag = 100
-    self.addSubview(indicator)
-    indicator.startAnimating()
-    indicator.translatesAutoresizingMaskIntoConstraints = false
-    indicator.centerXAnchor.constraint(equalTo: self.centerXAnchor).isActive = true
-    indicator.centerYAnchor.constraint(equalTo: self.centerYAnchor).isActive = true
-    self.bringSubviewToFront(indicator)
+
+extension PreviewViewController: UIScrollViewDelegate {
+
+  func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+    return self.previewView
   }
-  
-  func hideLoadingView() {
-    if self.subviews.contains(where: { $0.tag == 100 }), let view = self.subviews.first(where: { $0.tag == 100 }) {
-      view.removeFromSuperview()
-    }
-  }
+
 }

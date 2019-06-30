@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
-        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PreviewViewController" customModule="AnimalPhotoViewer" customModuleProvider="target">
             <connections>
                 <outlet property="previewView" destination="Hyv-Z2-Iy5" id="jXi-U1-CeK"/>
+                <outlet property="scrollView" destination="IUh-MM-ZSf" id="hBs-4D-uO4"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -21,34 +21,30 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MrN-Zd-WLi">
-                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rnh-YK-7r0">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hyv-Z2-Iy5">
-                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
-                            </imageView>
-                        </subviews>
-                        <constraints>
-                            <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="leading" secondItem="rnh-YK-7r0" secondAttribute="leading" id="cYz-2o-FVj"/>
-                            <constraint firstAttribute="trailing" secondItem="Hyv-Z2-Iy5" secondAttribute="trailing" id="fYQ-gM-xgl"/>
-                            <constraint firstAttribute="bottom" secondItem="Hyv-Z2-Iy5" secondAttribute="bottom" id="hXy-8F-e7N"/>
-                            <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="top" secondItem="rnh-YK-7r0" secondAttribute="top" id="xav-9q-jc7"/>
-                        </constraints>
-                    </view>
-                    <blurEffect style="light"/>
-                </visualEffectView>
+                <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="IUh-MM-ZSf">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <subviews>
+                        <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hyv-Z2-Iy5">
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        </imageView>
+                    </subviews>
+                    <constraints>
+                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="centerY" secondItem="IUh-MM-ZSf" secondAttribute="centerY" id="0Oe-vQ-2yL"/>
+                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="leading" secondItem="IUh-MM-ZSf" secondAttribute="leading" id="1qm-vS-Qu5"/>
+                        <constraint firstAttribute="bottom" secondItem="Hyv-Z2-Iy5" secondAttribute="bottom" id="7Qr-2v-QEL"/>
+                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="centerX" secondItem="IUh-MM-ZSf" secondAttribute="centerX" id="c2S-Nv-eur"/>
+                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="top" secondItem="IUh-MM-ZSf" secondAttribute="top" id="vlS-Su-LMf"/>
+                        <constraint firstAttribute="trailing" secondItem="Hyv-Z2-Iy5" secondAttribute="trailing" id="xN4-ir-KFm"/>
+                    </constraints>
+                </scrollView>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="MrN-Zd-WLi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DVd-x0-zqx"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MrN-Zd-WLi" secondAttribute="trailing" id="Oa2-0T-zyF"/>
-                <constraint firstItem="MrN-Zd-WLi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="PmX-xs-RvT"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MrN-Zd-WLi" secondAttribute="bottom" id="Tbz-28-exn"/>
+                <constraint firstItem="IUh-MM-ZSf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="auc-in-0kg"/>
+                <constraint firstAttribute="trailing" secondItem="IUh-MM-ZSf" secondAttribute="trailing" id="bPT-0Z-Ya0"/>
+                <constraint firstAttribute="bottom" secondItem="IUh-MM-ZSf" secondAttribute="bottom" id="wEK-Hr-N0Z"/>
+                <constraint firstItem="IUh-MM-ZSf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yEf-Eb-VqX"/>
             </constraints>
-            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>
     </objects>
 </document>

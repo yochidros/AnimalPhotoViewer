@@ -18,16 +18,19 @@ public class APISearchRepository: SearchRepository {
     return self.totalPage > self.currentPage
   }
   
-  private var totalPage: Int = 0
-  private var currentPage: Int = 1
+  private var totalPage: Int = 1
+  private var currentPage: Int = 0
   
   public init() {
   }
   
   public func search(next: Bool, params: [String : String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void) {
-    if next, hasNext {
+    if hasNext {
         self.currentPage += 1
     } else {
+      return
+    }
+    if !next {
       self.currentPage = 1
     }
     var queries: [String: String] = params ?? [:]

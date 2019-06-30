@@ -33,6 +33,8 @@
 		F2B2DE8F22C79C8600D3FFE6 /* APIRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B2DE8E22C79C8600D3FFE6 /* APIRequest.swift */; };
 		F2B2DE9322C79D3C00D3FFE6 /* Const.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B2DE9222C79D3C00D3FFE6 /* Const.swift */; };
 		F2B2DE9622C7A97700D3FFE6 /* APISearchRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2B2DE9522C7A97700D3FFE6 /* APISearchRequest.swift */; };
+		F2E4756F22C8E346008F148A /* UIView+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4756E22C8E346008F148A /* UIView+extension.swift */; };
+		F2E4757322C8EDA2008F148A /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = F2E4757222C8EDA2008F148A /* Util.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -121,6 +123,8 @@
 		F2B2DE8E22C79C8600D3FFE6 /* APIRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIRequest.swift; sourceTree = "<group>"; };
 		F2B2DE9222C79D3C00D3FFE6 /* Const.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Const.swift; sourceTree = "<group>"; };
 		F2B2DE9522C7A97700D3FFE6 /* APISearchRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APISearchRequest.swift; sourceTree = "<group>"; };
+		F2E4756E22C8E346008F148A /* UIView+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+extension.swift"; sourceTree = "<group>"; };
+		F2E4757222C8EDA2008F148A /* Util.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -223,6 +227,7 @@
 			children = (
 				F268392E22C89B9900D6613C /* extensions */,
 				F268392722C88E2900D6613C /* ImageLoader.swift */,
+				F2E4757222C8EDA2008F148A /* Util.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -240,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				F268392F22C89BAF00D6613C /* NSObject+extension.swift */,
+				F2E4756E22C8E346008F148A /* UIView+extension.swift */,
 			);
 			path = extensions;
 			sourceTree = "<group>";
@@ -564,10 +570,12 @@
 			files = (
 				F2B2DDF122C787A100D3FFE6 /* SearchViewController.swift in Sources */,
 				F268393022C89BAF00D6613C /* NSObject+extension.swift in Sources */,
+				F2E4756F22C8E346008F148A /* UIView+extension.swift in Sources */,
 				F268393422C8A24D00D6613C /* PreviewViewController.swift in Sources */,
 				F2B2DDEF22C787A100D3FFE6 /* AppDelegate.swift in Sources */,
 				F268392822C88E2900D6613C /* ImageLoader.swift in Sources */,
 				F268392422C8859900D6613C /* SearchPresenter.swift in Sources */,
+				F2E4757322C8EDA2008F148A /* Util.swift in Sources */,
 				F268392C22C8935D00D6613C /* SearchListCollectionViewCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
