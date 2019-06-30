@@ -21,16 +21,32 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hyv-Z2-Iy5">
+                <visualEffectView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MrN-Zd-WLi">
                     <rect key="frame" x="0.0" y="44" width="414" height="818"/>
-                </imageView>
+                    <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="rnh-YK-7r0">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hyv-Z2-Iy5">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
+                            </imageView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="leading" secondItem="rnh-YK-7r0" secondAttribute="leading" id="cYz-2o-FVj"/>
+                            <constraint firstAttribute="trailing" secondItem="Hyv-Z2-Iy5" secondAttribute="trailing" id="fYQ-gM-xgl"/>
+                            <constraint firstAttribute="bottom" secondItem="Hyv-Z2-Iy5" secondAttribute="bottom" id="hXy-8F-e7N"/>
+                            <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="top" secondItem="rnh-YK-7r0" secondAttribute="top" id="xav-9q-jc7"/>
+                        </constraints>
+                    </view>
+                    <blurEffect style="light"/>
+                </visualEffectView>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="4GR-0z-0vx"/>
-                <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="HKc-mP-Vao"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Hyv-Z2-Iy5" secondAttribute="bottom" id="Q4S-8a-WFa"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Hyv-Z2-Iy5" secondAttribute="trailing" id="YiJ-j9-qbQ"/>
+                <constraint firstItem="MrN-Zd-WLi" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="DVd-x0-zqx"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MrN-Zd-WLi" secondAttribute="trailing" id="Oa2-0T-zyF"/>
+                <constraint firstItem="MrN-Zd-WLi" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="PmX-xs-RvT"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="MrN-Zd-WLi" secondAttribute="bottom" id="Tbz-28-exn"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
         </view>

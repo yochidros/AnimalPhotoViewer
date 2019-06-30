@@ -20,7 +20,7 @@ protocol BasePresentation {
 protocol SearchView {
   var presenter: SearchPresentation? { get }
   
-  func onReceivedItems()
+  func onReceivedItems(count: Int)
 }
 
 protocol SearchPresentation: BasePresentation{
@@ -70,33 +70,44 @@ final class SearchPresenter: NSObject, SearchPresentation {
     self.searchText = searchText
     self.images = []
     self.isLoading = true
+    let text = (searchText != nil) ? "animal+\(searchText!)" : "animal"
     self.respository.search(
       next: false,
-      params: (searchText != nil) ? ["q": searchText ?? ""] : nil,
+      params: ["q": text],
       onSuccess: { [self] (response) in
         self.images = response.items
         self.isLoading = false
       DispatchQueue.main.async { [weak self] in
-        self?.view.onReceivedItems()
+        self?.view.onReceivedItems(count: self?.images.count ?? 0)
       }
     }) { (error) in
       print(error ?? "error")
+      DispatchQueue.main.async {
+        [weak self] in
+        self?.view.onReceivedItems(count: 0)
+      }
     }
   }
   
   func nextLoad() {
     self.isLoading = true
+    let text = (self.searchText != nil) ? "animal+\(self.searchText!)" : "animal"
     self.respository.search(
       next: true,
-      params: (self.searchText != nil) ? ["q": self.searchText ?? ""] : nil,
+      params: ["q": text],
       onSuccess: { [self] (response) in
         self.images.append(contentsOf: response.items)
         self.isLoading = false
         DispatchQueue.main.async { [weak self] in
-          self?.view.onReceivedItems()
+          self?.view.onReceivedItems(count: self?.images.count ?? 0)
         }
-    }) { (error) in
+    }) { [weak self] (error) in
       print(error ?? "error")
+      DispatchQueue.main.async {
+        [weak self] in
+        self?.view.onReceivedItems(count: 0)
+      }
+      
     }
   }
 }

@@ -12,6 +12,7 @@ class SearchViewController: UIViewController, SearchView {
   var presenter: SearchPresentation?
   
   @IBOutlet weak var collectionView: UICollectionView?
+  @IBOutlet weak var textLabel: UILabel?
 
   private lazy var searchController: UISearchController = {
       return UISearchController(searchResultsController: nil)
@@ -37,14 +38,19 @@ class SearchViewController: UIViewController, SearchView {
     self.presenter?.viewWillAppear()
   }
 
-  func onReceivedItems() {
+  func onReceivedItems(count: Int) {
+    self.view.hideLoadingView()
+    if count == 0 {
+      self.textLabel?.isHidden = false
+    } else {
+      self.textLabel?.isHidden = true
+    }
     self.collectionView?.reloadData()
   }
   
   private func prepareViews() {
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = true
-    searchController.searchResultsUpdater = self
     searchController.searchBar.delegate = self
     searchController.obscuresBackgroundDuringPresentation = false
     
@@ -58,15 +64,9 @@ class SearchViewController: UIViewController, SearchView {
     self.collectionView?.register(UINib(nibName: SearchListCollectionViewCell.className, bundle: nil), forCellWithReuseIdentifier: SearchListCollectionViewCell.className)
     self.collectionView?.dataSource = self.presenter?.dataSource
     self.collectionView?.delegate = self.presenter?.collectionDelegate
+    self.view.showLoading()
   }
 
-}
-extension SearchViewController: UISearchResultsUpdating {
-  func updateSearchResults(for searchController: UISearchController) {
-//    if let text = searchController.searchBar.text, !text.isEmpty {
-//        self.presenter?.searchImages(searchText: text)
-//    }
-  }
 }
 
 extension SearchViewController: UISearchBarDelegate {
@@ -75,5 +75,9 @@ extension SearchViewController: UISearchBarDelegate {
     if let text = searchController.searchBar.text, !text.isEmpty {
       self.presenter?.searchImages(searchText: text)
     }
+  }
+  
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    self.presenter?.searchImages(searchText: nil)
   }
 }

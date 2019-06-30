@@ -29,7 +29,7 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お探しの物が見つかりませんでした" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBf-Ge-66d">
+                            <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お探しの物が見つかりませんでした" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBf-Ge-66d">
                                 <rect key="frame" x="16" y="491" width="382" height="20"/>
                                 <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="20"/>
                                 <nil key="textColor"/>
@@ -52,6 +52,7 @@
                     <navigationItem key="navigationItem" title="SearchAnimal" id="gT6-Gt-UWQ"/>
                     <connections>
                         <outlet property="collectionView" destination="7Mr-FT-qlT" id="KKD-16-VE9"/>
+                        <outlet property="textLabel" destination="DBf-Ge-66d" id="kh0-ZI-bIz"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
