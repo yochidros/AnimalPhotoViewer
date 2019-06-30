@@ -8,17 +8,17 @@
 
 import Foundation
 
-public class APISearchImageRequest: APIRequest {
+final class APISearchImageRequest: APIRequest {
 
-  public typealias Response = SearchResponse
+  typealias Response = SearchResponse
   
   let queryParams: [String: String]
   
-  init(query: [String: String] = [:]) {
+  init(_ query: [String: String] = [:]) {
     self.queryParams = query
   }
   
-  public var query: [String : String] {
+  var query: [String : String] {
     return self.queryParams
   }
   

@@ -9,11 +9,11 @@
 import Foundation
 
 public struct SearchResponse: Codable {
-  let totalHits: Int
+  let totalCount: Int
   let items: [ItemResponse]
   
   enum CodingKeys: String, CodingKey {
-    case totalHits
+    case totalCount = "totalHits"
     case items = "hits"
   }
 }

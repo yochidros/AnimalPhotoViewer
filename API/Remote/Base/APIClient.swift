@@ -8,33 +8,31 @@
 
 import Foundation
 
-public class APIClient<Request: APIRequest>: NSObject {
+final class APIClient<Request: APIRequest>: NSObject {
  
-  public let session: URLSession = URLSession.shared
+  private let session: URLSession = URLSession.shared
   private let json: JSONDecoder = JSONDecoder()
 
-  public override init() {
+  override init() {
     super.init()
   }
   
-  public static func send(request: Request, onSuccess: @escaping (Request.Response) -> Void, onError: @escaping (Error?) -> Void )  {
+  static func send(request: Request, onResult: @escaping (Result<Request.Response, Error>) -> Void)  {
     let client = APIClient<Request>()
-    print(request.request)
+    #if DEBUG
+    print(#file, #line, request.request)
+    #endif
     client.session.dataTask(with: request.request) { (data, response, error) in
       if let data = data, response != nil {
         do {
           let obj = try client.json.decode(Request.Response.self, from: data)
-          DispatchQueue.main.async {
-            onSuccess(obj)
-          }
+          onResult(Result.success(obj))
         } catch let e {
-          DispatchQueue.main.async {
-            onError(e)
-          }
+          onResult(Result.failure(e))
         }
       } else {
-        DispatchQueue.main.async {
-          onError(error)
+        if let err = error {
+          onResult(Result.failure(err))
         }
       }
     }.resume()

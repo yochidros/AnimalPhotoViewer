@@ -11,26 +11,56 @@ import XCTest
 
 class APITests: XCTestCase {
 
+  private let searchException: XCTestExpectation = XCTestExpectation(description: "fetch api test")
+  private let repository: SearchRepository = APISearchRepository()
   override func setUp() {
-    // Put setup code here. This method is called before the invocation of each test method in the class.
   }
   
   override func tearDown() {
-    // Put teardown code here. This method is called after the invocation of each test method in the class.
   }
   
-  func testURLSession() {
-    let exception = expectation(description: "fetch test")
-    let req = APISearchImageRequest(query: ["q": "犬"])
-    APIClient.send(request: req, onSuccess: { (response) in
-      print(response)
-      exception.fulfill()
-    }) { (error) in
-      print(error)
-      XCTAssert(false)
-      exception.fulfill()
+  func testAPIClinetSearch() {
+    let req = APISearchImageRequest()
+    APIClient.send(request: req) { [searchException] result in
+      switch result {
+      case .success(let response):
+        print(response)
+        searchException.fulfill()
+      case .failure(let error):
+        print(error)
+        XCTAssert(false)
+        searchException.fulfill()
+      }
     }
-    wait(for: [exception], timeout: 10)
+    wait(for: [searchException], timeout: 1)
   }
   
+  func testAPIClientSearchWithQuery() {
+    let req = APISearchImageRequest(["q": "dog"])
+    APIClient.send(request: req) { [searchException] result in
+      switch result {
+      case .success(let response):
+        dump(response)
+        searchException.fulfill()
+      case .failure(let error):
+        print(error)
+        XCTAssert(false)
+        searchException.fulfill()
+      }
+    }
+    wait(for: [searchException], timeout: 1)
+  }
+  
+  func testAPISearchRepository() {
+    repository.search(params: nil, onSuccess: { [searchException] (response) in
+      dump(response)
+      searchException.fulfill()
+    }) { [searchException] (error) in
+      dump(error)
+      XCTAssert(false)
+      searchException.fulfill()
+    }
+    
+    wait(for: [searchException], timeout: 1)
+  }
 }

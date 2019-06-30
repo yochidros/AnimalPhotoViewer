@@ -8,11 +8,11 @@
 
 import Foundation
 
-public protocol Request {
+protocol Request {
   associatedtype Response: Codable
 }
 
-public protocol APIRequest: Request {
+protocol APIRequest: Request {
   var query: [String: String] { get }
 }
 
