@@ -44,6 +44,9 @@ class SearchViewController: UIViewController, SearchView {
   private func prepareViews() {
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = true
+    searchController.searchResultsUpdater = self
+    searchController.searchBar.delegate = self
+    searchController.obscuresBackgroundDuringPresentation = false
     
     if let layout = self.collectionView?.collectionViewLayout as? UICollectionViewFlowLayout {
       let margin: CGFloat = 16
@@ -57,4 +60,20 @@ class SearchViewController: UIViewController, SearchView {
     self.collectionView?.delegate = self.presenter?.collectionDelegate
   }
 
+}
+extension SearchViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+//    if let text = searchController.searchBar.text, !text.isEmpty {
+//        self.presenter?.searchImages(searchText: text)
+//    }
+  }
+}
+
+extension SearchViewController: UISearchBarDelegate {
+  
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    if let text = searchController.searchBar.text, !text.isEmpty {
+      self.presenter?.searchImages(searchText: text)
+    }
+  }
 }

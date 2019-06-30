@@ -29,13 +29,23 @@
                                 </collectionViewFlowLayout>
                                 <cells/>
                             </collectionView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="お探しの物が見つかりませんでした" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DBf-Ge-66d">
+                                <rect key="frame" x="16" y="491" width="382" height="20"/>
+                                <fontDescription key="fontDescription" name="HiraginoSans-W6" family="Hiragino Sans" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstItem="DBf-Ge-66d" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="F0s-Ze-g4O"/>
                             <constraint firstItem="7Mr-FT-qlT" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="Fea-Bw-aV4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="DBf-Ge-66d" secondAttribute="trailing" constant="16" id="Gfa-Ez-iHa"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="7Mr-FT-qlT" secondAttribute="bottom" id="OEF-2N-zzY"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="7Mr-FT-qlT" secondAttribute="trailing" id="XVP-zS-vYR"/>
+                            <constraint firstItem="DBf-Ge-66d" firstAttribute="centerX" secondItem="7Mr-FT-qlT" secondAttribute="centerX" id="gYG-Kd-fnT"/>
                             <constraint firstItem="7Mr-FT-qlT" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="jcb-cI-XaT"/>
+                            <constraint firstItem="DBf-Ge-66d" firstAttribute="centerY" secondItem="7Mr-FT-qlT" secondAttribute="centerY" id="lej-9W-GYt"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

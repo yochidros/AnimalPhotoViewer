@@ -27,7 +27,8 @@ protocol SearchPresentation: BasePresentation{
   var view: SearchView { get }
   var dataSource: UICollectionViewDataSource? { get }
   var collectionDelegate: UICollectionViewDelegate? { get }
-  func searchImages()
+  func searchImages(searchText: String?)
+  func nextLoad()
 }
 
 final class SearchPresenter: NSObject, SearchPresentation {
@@ -38,6 +39,8 @@ final class SearchPresenter: NSObject, SearchPresentation {
   let respository: SearchRepository
   
   private var images: [ItemResponse] = []
+  private var searchText: String?
+  private var isLoading: Bool = true
   
   init(view: SearchView) {
     self.view = view
@@ -52,7 +55,7 @@ final class SearchPresenter: NSObject, SearchPresentation {
   }
   
   func viewWillAppear() {
-    self.searchImages()
+    self.searchImages(searchText: nil)
   }
   
   func viewDidAppear() {
@@ -63,10 +66,35 @@ final class SearchPresenter: NSObject, SearchPresentation {
   func viewDidDisappear() {
   }
   
-  func searchImages() {
-    self.respository.search(params: nil, onSuccess: { [self] (response) in
-      self.images.append(contentsOf: response.items)
-      self.view.onReceivedItems()
+  func searchImages(searchText: String?) {
+    self.searchText = searchText
+    self.images = []
+    self.isLoading = true
+    self.respository.search(
+      next: false,
+      params: (searchText != nil) ? ["q": searchText ?? ""] : nil,
+      onSuccess: { [self] (response) in
+        self.images = response.items
+        self.isLoading = false
+      DispatchQueue.main.async { [weak self] in
+        self?.view.onReceivedItems()
+      }
+    }) { (error) in
+      print(error ?? "error")
+    }
+  }
+  
+  func nextLoad() {
+    self.isLoading = true
+    self.respository.search(
+      next: true,
+      params: (self.searchText != nil) ? ["q": self.searchText ?? ""] : nil,
+      onSuccess: { [self] (response) in
+        self.images.append(contentsOf: response.items)
+        self.isLoading = false
+        DispatchQueue.main.async { [weak self] in
+          self?.view.onReceivedItems()
+        }
     }) { (error) in
       print(error ?? "error")
     }
@@ -79,10 +107,23 @@ extension SearchPresenter: UICollectionViewDelegateFlowLayout {
       return .zero
     }
     let image = self.images[indexPath.row]
-    dump(image)
     return CGSize(width: image.previewWidth, height: image.previewHeight)
   }
+  
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    let image = self.images[indexPath.row]
+    let view = PreviewViewController(image: image)
+    (self.view as? UIViewController)?.navigationController?.pushViewController(view, animated: true)
+  }
+  
+  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+    if indexPath.row == images.count - 2, !isLoading{
+      self.isLoading = true
+      self.nextLoad()
+    }
+  }
 }
+
 extension SearchPresenter: UICollectionViewDataSource {
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     return self.images.count
