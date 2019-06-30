@@ -8,12 +8,16 @@
 
 import Foundation
 
-protocol SearchRepository {
+public protocol SearchRepository {
   func search(params: [String: String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void)
 }
 
 public class APISearchRepository: SearchRepository {
-  func search(params: [String : String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void) {
+  
+  public init() {
+  }
+  
+  public func search(params: [String : String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void) {
     let request = APISearchImageRequest(params ?? [:])
     APIClient.send(request: request) {
       [onSuccess, onError] (result) in

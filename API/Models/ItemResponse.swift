@@ -9,7 +9,11 @@
 import Foundation
 
 public struct ItemResponse: Codable {
-  let id: Int
-  let largeImageURL: String
-  let previewURL: String
+  public let id: Int
+  public let largeImageURL: String
+  public let previewURL: String
+  public let previewWidth: CGFloat
+  public let previewHeight: CGFloat
+  public let imageWidth: CGFloat
+  public let imageHeight: CGFloat
 }
