@@ -20,9 +20,8 @@ class ImageLoader: NSObject {
   
   private func load(url: URL, view: UIImageView) {
     URLSession.shared.dataTask(with: url) { (data, _, error) in
-      if let e = error {
+      if error != nil {
         view.hideLoadingView()
-        print(e)
         return
       }
       

@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE3B25CE22CF11B90019F321 /* CardTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B25CD22CF11B90019F321 /* CardTransition.swift */; };
+		CE3B25D022CF12B00019F321 /* PresentCardAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3B25CF22CF12B00019F321 /* PresentCardAnimator.swift */; };
 		F268391F22C87F4000D6613C /* SearchRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268391E22C87F4000D6613C /* SearchRepository.swift */; };
 		F268392422C8859900D6613C /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268392322C8859900D6613C /* SearchPresenter.swift */; };
 		F268392822C88E2900D6613C /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = F268392722C88E2900D6613C /* ImageLoader.swift */; };
@@ -90,6 +92,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		CE3B25CD22CF11B90019F321 /* CardTransition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardTransition.swift; sourceTree = "<group>"; };
+		CE3B25CF22CF12B00019F321 /* PresentCardAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentCardAnimator.swift; sourceTree = "<group>"; };
 		F268391E22C87F4000D6613C /* SearchRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchRepository.swift; sourceTree = "<group>"; };
 		F268392322C8859900D6613C /* SearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
 		F268392722C88E2900D6613C /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
@@ -168,6 +172,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE3B25CC22CF11980019F321 /* Transition */ = {
+			isa = PBXGroup;
+			children = (
+				CE3B25CD22CF11B90019F321 /* CardTransition.swift */,
+				CE3B25CF22CF12B00019F321 /* PresentCardAnimator.swift */,
+			);
+			path = Transition;
+			sourceTree = "<group>";
+		};
 		F268391C22C87F1800D6613C /* Base */ = {
 			isa = PBXGroup;
 			children = (
@@ -225,6 +238,7 @@
 		F268392622C88E2000D6613C /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				CE3B25CC22CF11980019F321 /* Transition */,
 				F268392E22C89B9900D6613C /* extensions */,
 				F268392722C88E2900D6613C /* ImageLoader.swift */,
 				F2E4757222C8EDA2008F148A /* Util.swift */,
@@ -572,8 +586,10 @@
 				F268393022C89BAF00D6613C /* NSObject+extension.swift in Sources */,
 				F2E4756F22C8E346008F148A /* UIView+extension.swift in Sources */,
 				F268393422C8A24D00D6613C /* PreviewViewController.swift in Sources */,
+				CE3B25CE22CF11B90019F321 /* CardTransition.swift in Sources */,
 				F2B2DDEF22C787A100D3FFE6 /* AppDelegate.swift in Sources */,
 				F268392822C88E2900D6613C /* ImageLoader.swift in Sources */,
+				CE3B25D022CF12B00019F321 /* PresentCardAnimator.swift in Sources */,
 				F268392422C8859900D6613C /* SearchPresenter.swift in Sources */,
 				F2E4757322C8EDA2008F148A /* Util.swift in Sources */,
 				F268392C22C8935D00D6613C /* SearchListCollectionViewCell.swift in Sources */,

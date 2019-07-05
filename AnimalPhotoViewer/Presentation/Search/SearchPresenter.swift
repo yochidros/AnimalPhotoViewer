@@ -81,7 +81,6 @@ final class SearchPresenter: NSObject, SearchPresentation {
       params["q"] = (searchText != nil) ? "animal+\(searchText!)" : "animal"
     }
     self.respository.search(
-      next: false,
       params: params,
       onSuccess: { [self] (response) in
         self.images = response.items
@@ -110,8 +109,7 @@ final class SearchPresenter: NSObject, SearchPresentation {
       }
       params["q"] = (searchText != nil) ? "animal+\(searchText!)" : "animal"
     }
-    self.respository.search(
-      next: true,
+    self.respository.searchNext(
       params: params,
       onSuccess: { [self] (response) in
         self.images.append(contentsOf: response.items)
@@ -142,7 +140,7 @@ extension SearchPresenter: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     let image = self.images[indexPath.row]
     let view = PreviewViewController(image: image)
-    (self.view as? UIViewController)?.navigationController?.pushViewController(view, animated: true)
+    (self.view as? UIViewController)?.presentingViewController?.navigationController?.pushViewController(view, animated: true)
   }
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
