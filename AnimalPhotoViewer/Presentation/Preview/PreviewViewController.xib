@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
-    <device id="retina6_1" orientation="portrait">
-        <adaptation id="fullscreen"/>
-    </device>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14810.11" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14490.49"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14766.13"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,29 +21,31 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" maximumZoomScale="5" translatesAutoresizingMaskIntoConstraints="NO" id="IUh-MM-ZSf">
-                    <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                    <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                     <subviews>
                         <imageView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Hyv-Z2-Iy5">
-                            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                            <rect key="frame" x="0.0" y="0.0" width="414" height="818"/>
                         </imageView>
                     </subviews>
                     <constraints>
-                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="centerY" secondItem="IUh-MM-ZSf" secondAttribute="centerY" id="0Oe-vQ-2yL"/>
-                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="leading" secondItem="IUh-MM-ZSf" secondAttribute="leading" id="1qm-vS-Qu5"/>
-                        <constraint firstAttribute="bottom" secondItem="Hyv-Z2-Iy5" secondAttribute="bottom" id="7Qr-2v-QEL"/>
-                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="centerX" secondItem="IUh-MM-ZSf" secondAttribute="centerX" id="c2S-Nv-eur"/>
-                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="top" secondItem="IUh-MM-ZSf" secondAttribute="top" id="vlS-Su-LMf"/>
-                        <constraint firstAttribute="trailing" secondItem="Hyv-Z2-Iy5" secondAttribute="trailing" id="xN4-ir-KFm"/>
+                        <constraint firstAttribute="trailing" secondItem="Hyv-Z2-Iy5" secondAttribute="trailing" id="853-rh-x6e"/>
+                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="top" secondItem="IUh-MM-ZSf" secondAttribute="top" id="HRh-Gg-GBn"/>
+                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="width" secondItem="IUh-MM-ZSf" secondAttribute="width" id="IXt-Q3-AZ8"/>
+                        <constraint firstAttribute="bottom" secondItem="Hyv-Z2-Iy5" secondAttribute="bottom" id="dc7-bY-9tg"/>
+                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="leading" secondItem="IUh-MM-ZSf" secondAttribute="leading" id="mHv-C6-OYM"/>
+                        <constraint firstItem="Hyv-Z2-Iy5" firstAttribute="height" secondItem="IUh-MM-ZSf" secondAttribute="height" id="n9j-pJ-Nu4"/>
                     </constraints>
                 </scrollView>
             </subviews>
             <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="IUh-MM-ZSf" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="auc-in-0kg"/>
-                <constraint firstAttribute="trailing" secondItem="IUh-MM-ZSf" secondAttribute="trailing" id="bPT-0Z-Ya0"/>
-                <constraint firstAttribute="bottom" secondItem="IUh-MM-ZSf" secondAttribute="bottom" id="wEK-Hr-N0Z"/>
-                <constraint firstItem="IUh-MM-ZSf" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="yEf-Eb-VqX"/>
+                <constraint firstItem="IUh-MM-ZSf" firstAttribute="leading" secondItem="CjJ-JN-0ER" secondAttribute="leading" id="DFP-kN-UcP"/>
+                <constraint firstItem="IUh-MM-ZSf" firstAttribute="top" secondItem="CjJ-JN-0ER" secondAttribute="top" id="KoD-mn-UUD"/>
+                <constraint firstItem="IUh-MM-ZSf" firstAttribute="bottom" secondItem="CjJ-JN-0ER" secondAttribute="bottom" id="gf8-3q-7yB"/>
+                <constraint firstItem="IUh-MM-ZSf" firstAttribute="trailing" secondItem="CjJ-JN-0ER" secondAttribute="trailing" id="j0O-IQ-Z41"/>
             </constraints>
+            <viewLayoutGuide key="safeArea" id="CjJ-JN-0ER"/>
+            <point key="canvasLocation" x="131.8840579710145" y="153.34821428571428"/>
         </view>
     </objects>
 </document>
