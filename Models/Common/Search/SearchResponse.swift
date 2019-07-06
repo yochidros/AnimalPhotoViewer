@@ -10,7 +10,7 @@ import Foundation
 
 public struct SearchResponse: Codable {
   public let totalCount: Int
-  public let items: [ItemResponse]
+  public let items: [ImageResponse]
   
   enum CodingKeys: String, CodingKey {
     case totalCount = "totalHits"

@@ -7,44 +7,59 @@
 //
 
 import Foundation
+import Models
 
 public protocol SearchRepository {
-  func search(next: Bool, params: [String: String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void)
+    func search(params: [String: String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void)
+    func searchNext(params: [String: String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void)
 }
 
 public class APISearchRepository: SearchRepository {
-  
-  public var hasNext: Bool {
-    return self.totalPage > self.currentPage
-  }
-  
-  private var totalPage: Int = 1
-  private var currentPage: Int = 0
-  
-  public init() {
-  }
-  
-  public func search(next: Bool, params: [String : String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void) {
-    if hasNext {
-        self.currentPage += 1
-    } else {
-      return
+    public var hasNext: Bool {
+        return self.totalPage > self.currentPage
     }
-    if !next {
-      self.currentPage = 1
+    
+    private var totalPage: Int = 1
+    private var currentPage: Int = 0
+    
+    public init() {
     }
-    var queries: [String: String] = params ?? [:]
-    queries["page"] = "\(currentPage)"
-    let request = APISearchImageRequest(queries)
-    APIClient.send(request: request) {
-      [onSuccess, onError] (result) in
-      switch result {
-      case .success(let response):
-        self.totalPage = Int(round(Double(response.totalCount) / Double(20)))
-        onSuccess(response)
-      case .failure(let error):
-        onError(error)
-      }
+    
+    public func search(params: [String : String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void) {
+        self.currentPage = 1
+        var queries: [String: String] = params ?? [:]
+        queries["page"] = "\(currentPage)"
+        let request = APISearchImageRequest(queries)
+        APIClient.send(request: request) {
+            [onSuccess, onError] (result) in
+            switch result {
+            case .success(let response):
+                self.totalPage = Int(round(Double(response.totalCount) / Double(20)))
+                onSuccess(response)
+            case .failure(let error):
+                onError(error)
+            }
+        }
     }
-  }
+    
+    public func searchNext(params: [String : String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void) {
+        if hasNext {
+            self.currentPage += 1
+        } else {
+            return
+        }
+        var queries: [String: String] = params ?? [:]
+        queries["page"] = "\(currentPage)"
+        let request = APISearchImageRequest(queries)
+        APIClient.send(request: request) {
+            [onSuccess, onError] (result) in
+            switch result {
+            case .success(let response):
+                self.totalPage = Int(round(Double(response.totalCount) / Double(20)))
+                onSuccess(response)
+            case .failure(let error):
+                onError(error)
+            }
+        }
+    }
 }

@@ -1,5 +1,5 @@
 //
-//  ItemResponse.swift
+//  ImageResponse.swift
 //  API
 //
 //  Created by yochidros on 2019/06/29.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-public struct ItemResponse: Codable {
+public struct ImageResponse: Codable {
   public let id: Int
   public let largeImageURL: String
   public let previewURL: String

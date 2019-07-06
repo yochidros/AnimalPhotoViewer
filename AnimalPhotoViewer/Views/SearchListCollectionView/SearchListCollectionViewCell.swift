@@ -34,6 +34,7 @@ class SearchListCollectionViewCell: UICollectionViewCell {
   }
 
   func configure(imageURL: String) {
+	self.imageView?.image = nil
     self.imageView?.layer.cornerRadius = 8
     self.imageView?.clipsToBounds = true
     ImageLoader.loadImage(url: imageURL, into: self.imageView)
