@@ -1,8 +1,9 @@
 # AnimalPhotoViewer
 
- [0](/resources/0.png)
- [1](/resources/1.png)
- [2](/resources/2.png)
+![0](https://user-images.githubusercontent.com/26223064/60751512-572ccf80-9ff1-11e9-9ff7-ff0844989388.png)
+![1](https://user-images.githubusercontent.com/26223064/60751513-572ccf80-9ff1-11e9-991b-3abe7393f874.png)
+![2](https://user-images.githubusercontent.com/26223064/60751514-572ccf80-9ff1-11e9-8f0b-d418f288c8ca.png)
+
  
  ### ユーザーの課題、欲求
   - twitterやその他のwebブラウザなどでたまに出てくる動物の写真に対してユーザーたちは癒しを感じていると思える。
