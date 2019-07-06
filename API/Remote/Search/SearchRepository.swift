@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Models
 
 public protocol SearchRepository {
     func search(params: [String: String]?, onSuccess: @escaping (SearchResponse) -> Void, onError: @escaping (Error?) -> Void)

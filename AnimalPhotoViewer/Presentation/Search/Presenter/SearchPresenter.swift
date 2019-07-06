@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import Models
 import API
 
 
@@ -17,7 +18,7 @@ final class SearchPresenter: NSObject, SearchPresentation {
 	var view: SearchView
 	let respository: SearchRepository
 	
-	private var images: [ItemResponse] = []
+	private var images: [ImageResponse] = []
 	private var searchText: String?
 	private var isLoading: Bool = true
 	

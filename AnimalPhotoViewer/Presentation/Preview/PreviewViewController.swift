@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import API
+import Models
 import AVFoundation
 
 class PreviewViewController: UIViewController {
@@ -15,11 +15,11 @@ class PreviewViewController: UIViewController {
   @IBOutlet weak var scrollView: UIScrollView?
   
   @IBOutlet weak var previewView: UIImageView?
-  private var image: ItemResponse?
+  private var image: ImageResponse?
   var gestureRecognizer: UITapGestureRecognizer?
   
   
-  init(image: ItemResponse) {
+  init(image: ImageResponse) {
     self.image = image
     super.init(nibName: PreviewViewController.className, bundle: nil)
   }
